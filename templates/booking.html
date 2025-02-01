@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{{ url_for('static', filename='styles.css') }}?v={{ time.time() }}" rel="stylesheet">
-
-  <title>Transport</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='styles.css') }}?v={{ time.time() }}" rel="stylesheet">
+    <title>Booking</title>
 </head>
-<body class="bg-red-100">
-    <form action="/submit" method="post">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <button type="submit">Add User</button>
-    </form>
-    
+<body class="bg-gray-200 flex">
+
+    <!-- Sidebar -->
+    <nav class="w-64 bg-blue-600 text-white min-h-screen p-5">
+        <h2 class="text-2xl font-bold mb-6">Transport</h2>
+        <ul class="space-y-3">
+            <li><a href="/" class="block p-2 rounded hover:bg-blue-700">🏠 Home</a></li>
+            <li><a href="/booking" class="block p-2 bg-blue-800 rounded">📝 Booking</a></li>
+            <li><a href="/report" class="block p-2 rounded hover:bg-blue-700">📊 Report</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10">
+        <h1 class="text-3xl font-bold text-center">Book a Transport</h1>
+        <form action="/submit" method="post" class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto mt-6">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 pb-2">Name</label>
+                <input type="text" name="name" required class="w-full p-2 border rounded">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 pb-2">Number of People</label>
+                <input type="number" name="people" required class="w-full p-2 border rounded">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 pb-2">Transportation Type</label>
+                <select name="transport" required class="w-full p-2 border rounded">
+                    <option value="">Select transport</option>
+                    <option value="car">Car</option>
+                    <option value="plane">Plane</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 mt-4 rounded hover:bg-blue-600">
+                Book Now
+            </button>
+        </form>
+    </main>
+
 </body>
 </html>
