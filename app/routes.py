@@ -10,6 +10,10 @@ def register_routes(app):
     def form():
         return render_template('booking.html')
     
+    @app.route('/report')
+    def report():
+        return render_template('report.html')
+    
     @app.route('/submit', methods=['POST'])
     def submit():
         name = request.form.get('name')
