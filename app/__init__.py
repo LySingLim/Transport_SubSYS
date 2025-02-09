@@ -2,6 +2,7 @@ from flask import Flask
 from .routes import register_routes
 import time
 import os
+from flask_cors import CORS
 
 def create_app():
     # Set up Flask application
@@ -26,5 +27,7 @@ def create_app():
     @app.context_processor
     def inject_time():
         return {'time': time}
+
+    CORS(app)  # Enable CORS for all domains (for testing)
 
     return app

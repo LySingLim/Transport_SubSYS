@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-from .database import booking_collection, users_collection
+from .database import booking_collection, users_collection, prices_collection
 
 def register_routes(app):
     @app.route('/')
@@ -60,3 +60,9 @@ def register_routes(app):
         })
 
         return jsonify({"success": True, "message": "Booking received!"}), 201
+
+    @app.route("/api/transports", methods=["GET"])
+    def get_transports():
+        transports = list(prices_collection.find({}, {"_id": 0, "id": 1, "transport": 1, "price": 1}))
+        print(transports)
+        return jsonify(transports)
